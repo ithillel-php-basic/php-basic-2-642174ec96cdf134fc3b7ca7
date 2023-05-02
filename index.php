@@ -142,8 +142,8 @@ $taskStatus = "backlog";
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="backlog">
-              <?php if ($taskStatus="backlog"): ?>
-              <div class="card card-info card-outline" data-task-id="1">
+              <?php if ($taskStatus == "backlog"): ?>
+                <div class="card card-info card-outline" data-task-id="1">
                 <div class="card-header">
                   <h5 class="card-title">Зробити головну</h5>
                   <div class="card-tools">
@@ -174,7 +174,7 @@ $taskStatus = "backlog";
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="to-do">
-              <?php if ($taskStatus="to-do"): ?>
+              <?php if ($taskStatus == "to-do"): ?>
               <?php endif ?>
             </div>
           </div>
@@ -185,7 +185,7 @@ $taskStatus = "backlog";
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="in-progress">
-              <?php if ($taskStatus="in-progress"): ?>
+              <?php if ($taskStatus == "in-progress"): ?>
               <?php endif ?>
             </div>
           </div>
@@ -196,7 +196,7 @@ $taskStatus = "backlog";
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="done">
-              <?php if ($tascStatus="done"): ?>
+              <?php if ($taskStatus == "done"): ?>
               <?php endif ?>
             </div>
           </div>
