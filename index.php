@@ -1,3 +1,7 @@
+<?php
+$taskStatus = "backlog";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,7 +142,8 @@
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="backlog">
-              <div class="card card-info card-outline" data-task-id="1">
+              <?php if ($taskStatus == "backlog"): ?>
+                <div class="card card-info card-outline" data-task-id="1">
                 <div class="card-header">
                   <h5 class="card-title">Зробити головну</h5>
                   <div class="card-tools">
@@ -159,7 +164,8 @@
                   <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
                 </div>
               </div>
-            </div>
+              <?php endif ?>
+             </div>
           </div>
           <div class="card card-row card-primary">
             <div class="card-header">
@@ -168,15 +174,19 @@
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="to-do">
+              <?php if ($taskStatus == "to-do"): ?>
+              <?php endif ?>
             </div>
           </div>
-          <div class="card card-row card-default">
+          <div class="card card-row card in-progress ">
             <div class="card-header bg-info">
               <h3 class="card-title">
                 В процесі
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="in-progress">
+              <?php if ($taskStatus == "in-progress"): ?>
+              <?php endif ?>
             </div>
           </div>
           <div class="card card-row card-success">
@@ -186,6 +196,8 @@
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="done">
+              <?php if ($taskStatus == "done"): ?>
+              <?php endif ?>
             </div>
           </div>
         </div>
@@ -225,5 +237,4 @@
   <!-- Page specific script -->
   <script src="static/js/kanban.js"></script>
 </body>
-
 </html>
