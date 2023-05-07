@@ -1,6 +1,48 @@
 <?php
-$taskStatus = "backlog";
+
+$arr  = array ( "Вхідні", "Навчання", "Робота", "Домашні справи", "Авто");
+
+$tasks= [
+
+    $projects = [
+    "project" => "Вхідні",
+    "title" => "Зустрітись з друзями",
+    "due date" => "14.05.2023",
+    "status" => "to-do",],
+
+    $projects  = [
+    "project" => "Навчання",
+    "title" => "Зробити завдання до першого уроку",
+    "due date" => "27.04.2023",
+    "status" => "done",],
+
+    $projects  = [
+    "project" => "Робота",
+    "title" => "Співбесіда в IT компанії",
+    "due date" => "01.07.23",
+    "status" => "backlog",],
+
+    $projects  = [
+    "project" => "Домашні справи",
+    "title" => "Купити корм для кота",
+    "due date" => "null",
+    "status" => "in-progress",],
+
+];
+
+foreach ($tasks as $projects) {
+  echo  "project" .$projects ["project"];
+  echo "<br>";
+  echo  "title" .$projects ["title"];
+  echo "<br>";
+  echo  "due date" .$projects ["due date"];
+  echo "<br>";
+  echo "status" .$projects ["status"];
+  echo "<br>";
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,18 +119,51 @@ $taskStatus = "backlog";
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget= "treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="index.php" class="nav-link active">
+              <a href= "index.php" class="nav-link active">
                 <i class="nav-icon fas fa-columns"></i>
                 <p>
-                  Назва проекту
+                  "Вхідні"
                   <span class="badge badge-info right">2</span>
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href= "index.php" class="nav-link active">
+                <i class="nav-icon fas fa-columns"></i>
+                <p>
+                  "Навчання"
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href= "index.php" class="nav-link active">
+                <i class="nav-icon fas fa-columns"></i>
+                <p>
+                  "Робота"
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href= "index.php" class="nav-link active">
+                <i class="nav-icon fas fa-columns"></i>
+                <p>
+                  "Домашні справи"
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href= "index.php" class="nav-link active">
+                <i class="nav-icon fas fa-columns"></i>
+                <p>
+                  "Авто"
+                </p>
+              </a>
+            </li>
+             <li
             <li class="nav-item">
               <a href="index.php" class="nav-link bg-olive">
                 <i class="nav-icon fas fa-plus"></i>
@@ -103,18 +178,17 @@ $taskStatus = "backlog";
       </div>
       <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper kanban">
       <section class="content-header">
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <h1>Назва проекту</h1>
+              <h1>$tasks</h1>
             </div>
             <div class="col-sm-6 d-none d-sm-block">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item active">Назва проекту</li>
+                <li class="breadcrumb-item active">$tasks</li>
               </ol>
             </div>
           </div>
@@ -132,7 +206,6 @@ $taskStatus = "backlog";
           </div>
         </div>
       </section>
-
       <section class="content pb-3">
         <div class="container-fluid h-100">
           <div class="card card-row card-secondary">
@@ -142,10 +215,9 @@ $taskStatus = "backlog";
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="backlog">
-              <?php if ($taskStatus == "backlog"): ?>
-                <div class="card card-info card-outline" data-task-id="1">
+              <div class="card card-info card-outline"  data-task-id="1">
                 <div class="card-header">
-                  <h5 class="card-title">Зробити головну</h5>
+                  <h5 class="card-title">"Робота"</h5>
                   <div class="card-tools">
                     <a href="#" class="btn btn-tool btn-link">#3</a>
                     <a href="#" class="btn btn-tool">
@@ -155,17 +227,15 @@ $taskStatus = "backlog";
                 </div>
                 <div class="card-body">
                   <p>
-                    Зробити головну сторінку списку задач з можливістю перегляду,
-                    створення, редагування, видалення задач.
+                    "Співбесіда в IT компанії"
                   </p>
                   <a href="#" class="btn btn-tool">
                     <i class="fas fa-file"></i>
                   </a>
-                  <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                  <small class="badge badge-danger"><i class="far fa-clock"></i> "01.07.23"</small>
                 </div>
               </div>
-              <?php endif ?>
-             </div>
+            </div>
           </div>
           <div class="card card-row card-primary">
             <div class="card-header">
@@ -174,19 +244,55 @@ $taskStatus = "backlog";
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="to-do">
-              <?php if ($taskStatus == "to-do"): ?>
-              <?php endif ?>
+              <div class="card card-info card-outline"  data-task-id="1">
+                <div class="card-header">
+                  <h5 class="card-title">"Вхідні"</h5>
+                  <div class="card-tools">
+                    <a href="#" class="btn btn-tool btn-link">#3</a>
+                    <a href="#" class="btn btn-tool">
+                      <i class="fas fa-pen"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p>
+                    "Зустрітись з друзями"
+                  </p>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-file"></i>
+                  </a>
+                  <small class="badge badge-danger"><i class="far fa-clock"></i> "14.05.2023"</small>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="card card-row card in-progress ">
+          <div class="card card-row card-default">
             <div class="card-header bg-info">
               <h3 class="card-title">
                 В процесі
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="in-progress">
-              <?php if ($taskStatus == "in-progress"): ?>
-              <?php endif ?>
+              <div class="card card-info card-outline"  data-task-id="1">
+                <div class="card-header">
+                  <h5 class="card-title">"Домашні справи"</h5>
+                  <div class="card-tools">
+                    <a href="#" class="btn btn-tool btn-link">#3</a>
+                    <a href="#" class="btn btn-tool">
+                      <i class="fas fa-pen"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p>
+                    "Купити корм для кота"
+                  </p>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-file"></i>
+                  </a>
+                  <small class="badge badge-danger"><i class="far fa-clock"></i> "null"</small>
+                </div>
+              </div>
             </div>
           </div>
           <div class="card card-row card-success">
@@ -196,8 +302,26 @@ $taskStatus = "backlog";
               </h3>
             </div>
             <div class="card-body connectedSortable" data-status="done">
-              <?php if ($taskStatus == "done"): ?>
-              <?php endif ?>
+              <div class="card card-info card-outline"  data-task-id="1">
+                <div class="card-header">
+                  <h5 class="card-title">"Навчання"</h5>
+                  <div class="card-tools">
+                    <a href="#" class="btn btn-tool btn-link">#3</a>
+                    <a href="#" class="btn btn-tool">
+                      <i class="fas fa-pen"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p>
+                    "Зробити завдання до першого уроку"
+                  </p>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-file"></i>
+                  </a>
+                  <small class="badge badge-danger"><i class="far fa-clock"></i> "27.04.2023"</small>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -209,7 +333,7 @@ $taskStatus = "backlog";
         <b>Version</b> 0.1.0
       </div>
       <strong>Copyright &copy; 2023 <a href="https://ithillel.ua/">Комп'ютерна школа Hillel</a>.</strong> All rights
-        reserved.
+      reserved.
     </footer>
 
     <!-- Control Sidebar -->
@@ -237,4 +361,10 @@ $taskStatus = "backlog";
   <!-- Page specific script -->
   <script src="static/js/kanban.js"></script>
 </body>
+
 </html>
+
+
+
+
+
