@@ -249,7 +249,7 @@ $tasks = [
           </div>
           <div class="card-body connectedSortable" data-status="in-progress">
             <?php  foreach ($tasks as $task): ?>
-            <?php if ($task["status"] == "to-do" ):?>
+            <?php if ($task["status"] == "in-progress" ):?>
               <div class="card card-info card-outline"  data-task-id="1">
                 <div class="card-header">
                   <h5 class="card-title"> <?= $task["title"] ?></h5>
@@ -281,7 +281,7 @@ $tasks = [
           </div>
           <div class="card-body connectedSortable" data-status="done">
             <?php  foreach ($tasks as $task): ?>
-            <?php if ($task["status"] == "to-do" ):?>
+            <?php if ($task["status"] == "done" ):?>
               <div class="card card-info card-outline"  data-task-id="1">
                 <div class="card-header">
                   <h5 class="card-title"> <?= $task["title"] ?></h5>
