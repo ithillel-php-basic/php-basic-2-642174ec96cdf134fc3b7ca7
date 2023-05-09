@@ -9,7 +9,18 @@ $projects  = [
 ];
 
 $tasks = [
-
+    [
+        "project" => "Робота",
+        "title" => "Виконати тестове завдання",
+        "due_date" => "25.07.23",
+        "status" => "backlog",
+    ],
+    [
+        "project" => "Домашні справи",
+        "title" => "Замовити піццу",
+        "due_date" => null,
+        "status" => "to-do",
+    ],
     [
         "project" => "Вхідні",
         "title" => "Зустрітись з друзями",
@@ -185,26 +196,26 @@ $tasks = [
           </div>
           <div class="card-body connectedSortable" data-status="backlog">
             <?php  foreach ($tasks as $task): ?>
-            <?php if ($task["status"] == "backlog" ):?>
-            <div class="card card-info card-outline"  data-task-id="1">
-              <div class="card-header">
-                <h5 class="card-title"> <?= $task["title"] ?></h5>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-link">#3</a>
-                  <a href="#" class="btn btn-tool">
-                    <i class="fas fa-pen"></i>
-                  </a>
+              <?php if ($task["status"] == "backlog" ):?>
+                <div class="card card-info card-outline"  data-task-id="1">
+                  <div class="card-header">
+                    <h5 class="card-title"> <?= $task["title"] ?></h5>
+                    <div class="card-tools">
+                      <a href="#" class="btn btn-tool btn-link">#3</a>
+                      <a href="#" class="btn btn-tool">
+                        <i class="fas fa-pen"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <p>
+                    </p>
+                    <a href="#" class="btn btn-tool">
+                      <i class="fas fa-file"></i>
+                    </a>
+                    <small class="badge badge-danger"><i class="far fa-clock"></i> <?= $task["due_date"] ?></small>
+                  </div>
                 </div>
-              </div>
-              <div class="card-body">
-                <p>
-                </p>
-                <a href="#" class="btn btn-tool">
-                  <i class="fas fa-file"></i>
-                </a>
-                <small class="badge badge-danger"><i class="far fa-clock"></i> <?= $task["due_date"] ?></small>
-              </div>
-            </div>
               <?php endif; ?>
             <?php  endforeach; ?>
           </div>
