@@ -1,6 +1,58 @@
 <?php
-$taskStatus = "backlog";
+
+$projects  = [
+    "Вхідні",
+    "Навчання",
+    "Робота",
+    "Домашні справи",
+    "Авто",
+];
+
+$tasks = [
+    [
+        "project" => "Робота",
+        "title" => "Виконати тестове завдання",
+        "due_date" => "25.07.23",
+        "status" => "backlog",
+    ],
+    [
+        "project" => "Домашні справи",
+        "title" => "Замовити піццу",
+        "due_date" => null,
+        "status" => "to-do",
+    ],
+    [
+        "project" => "Вхідні",
+        "title" => "Зустрітись з друзями",
+        "due_date" => "14.05.2023",
+        "status" => "to-do",
+    ],
+    [
+        "project" => "Навчання",
+        "title" => "Зробити завдання до першого уроку",
+        "due_date" => "27.04.2023",
+        "status" => "done",
+    ],
+    [
+        "project" => "Робота",
+        "title" => "Співбесіда в IT компанії",
+        "due_date" => "01.07.23",
+        "status" => "backlog",
+    ],
+    [
+        "project" => "Домашні справи",
+        "title" => "Купити корм для кота",
+        "due_date" => null,
+        "status" => "in-progress",
+    ],
+
+];
+
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +64,7 @@ $taskStatus = "backlog";
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="static/plugins/fontawesome-free/css/all.min.css">
   <!-- Ekko Lightbox -->
@@ -27,125 +79,159 @@ $taskStatus = "backlog";
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="index.php" class="nav-link">Дошка</a>
-        </li>
-        <li class="nav-item bg-primary d-none d-sm-inline-block">
-          <a href="index.php" class="nav-link">Створити задачу</a>
-        </li>
-      </ul>
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="index.php" class="nav-link">Дошка</a>
+      </li>
+      <li class="nav-item bg-primary d-none d-sm-inline-block">
+        <a href="index.php" class="nav-link">Створити задачу</a>
+      </li>
+    </ul>
 
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- /.navbar -->
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="index.php" class="brand-link">
-        <img src="static/img/logo.png" alt="Логотип Завдання та проекти" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
-        <span class="brand-text font-weight-light">Завдання та проекти</span>
-      </a>
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.php" class="brand-link">
+      <img src="static/img/logo.png" alt="Логотип Завдання та проекти" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Завдання та проекти</span>
+    </a>
 
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="static/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="static/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Володимир</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget= "treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+          <?php  foreach ($projects as $project): ?>
+          <li class="nav-item">
+            <a href= "index.php" class="nav-link active">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+               <?= $project ?>
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+          </li>
+          <?php  endforeach; ?>
+          <li class="nav-item">
+            <a href="index.php" class="nav-link bg-olive">
+              <i class="nav-icon fas fa-plus"></i>
+              <p>
+                Додати проект
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper kanban">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>Назва проекту</h1>
           </div>
-          <div class="info">
-            <a href="#" class="d-block">Володимир</a>
+          <div class="col-sm-6 d-none d-sm-block">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active">Назва проекту</li>
+            </ol>
           </div>
         </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-            <li class="nav-item">
-              <a href="index.php" class="nav-link active">
-                <i class="nav-icon fas fa-columns"></i>
-                <p>
-                  Назва проекту
-                  <span class="badge badge-info right">2</span>
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="index.php" class="nav-link bg-olive">
-                <i class="nav-icon fas fa-plus"></i>
-                <p>
-                  Додати проект
-                </p>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
-    </aside>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper kanban">
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1>Назва проекту</h1>
-            </div>
-            <div class="col-sm-6 d-none d-sm-block">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item active">Назва проекту</li>
-              </ol>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 offset-md-4">
-              <div class="row">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <a type="button" href="#" class="btn btn-secondary active">Усі завдання</a>
-                  <a type="button" href="#" class="btn btn-default">Порядок денний</a>
-                  <a type="button" href="#" class="btn btn-default">Завтра</a>
-                  <a type="button" href="#" class="btn btn-default">Прострочені</a>
-                </div>
+        <div class="row">
+          <div class="col-md-4 offset-md-4">
+            <div class="row">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <a type="button" href="#" class="btn btn-secondary active">Усі завдання</a>
+                <a type="button" href="#" class="btn btn-default">Порядок денний</a>
+                <a type="button" href="#" class="btn btn-default">Завтра</a>
+                <a type="button" href="#" class="btn btn-default">Прострочені</a>
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      <section class="content pb-3">
-        <div class="container-fluid h-100">
-          <div class="card card-row card-secondary">
-            <div class="card-header">
-              <h3 class="card-title">
-                Беклог
-              </h3>
-            </div>
-            <div class="card-body connectedSortable" data-status="backlog">
-              <?php if ($taskStatus == "backlog"): ?>
-                <div class="card card-info card-outline" data-task-id="1">
+      </div>
+    </section>
+    <section class="content pb-3">
+      <div class="container-fluid h-100">
+        <div class="card card-row card-secondary">
+          <div class="card-header">
+            <h3 class="card-title">
+              Беклог
+            </h3>
+          </div>
+          <div class="card-body connectedSortable" data-status="backlog">
+            <?php  foreach ($tasks as $task): ?>
+              <?php if ($task["status"] == "backlog" ):?>
+                <div class="card card-info card-outline"  data-task-id="1">
+                  <div class="card-header">
+                    <h5 class="card-title"> <?= $task["title"] ?></h5>
+                    <div class="card-tools">
+                      <a href="#" class="btn btn-tool btn-link">#3</a>
+                      <a href="#" class="btn btn-tool">
+                        <i class="fas fa-pen"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <p>
+                    </p>
+                    <a href="#" class="btn btn-tool">
+                      <i class="fas fa-file"></i>
+                    </a>
+                    <small class="badge badge-danger"><i class="far fa-clock"></i> <?= $task["due_date"] ?></small>
+                  </div>
+                </div>
+              <?php endif; ?>
+            <?php  endforeach; ?>
+          </div>
+        </div>
+        <div class="card card-row card-primary">
+          <div class="card-header">
+            <h3 class="card-title">
+              Зробити
+            </h3>
+          </div>
+          <div class="card-body connectedSortable" data-status="to-do">
+            <?php  foreach ($tasks as $task): ?>
+            <?php if ($task["status"] == "to-do" ):?>
+              <div class="card card-info card-outline"  data-task-id="1">
                 <div class="card-header">
-                  <h5 class="card-title">Зробити головну</h5>
+                  <h5 class="card-title"> <?= $task["title"] ?></h5>
                   <div class="card-tools">
                     <a href="#" class="btn btn-tool btn-link">#3</a>
                     <a href="#" class="btn btn-tool">
@@ -155,86 +241,121 @@ $taskStatus = "backlog";
                 </div>
                 <div class="card-body">
                   <p>
-                    Зробити головну сторінку списку задач з можливістю перегляду,
-                    створення, редагування, видалення задач.
                   </p>
                   <a href="#" class="btn btn-tool">
                     <i class="fas fa-file"></i>
                   </a>
-                  <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                  <small class="badge badge-danger"><i class="far fa-clock"></i> <?= $task["due_date"] ?></small>
                 </div>
               </div>
-              <?php endif ?>
-             </div>
-          </div>
-          <div class="card card-row card-primary">
-            <div class="card-header">
-              <h3 class="card-title">
-                Зробити
-              </h3>
-            </div>
-            <div class="card-body connectedSortable" data-status="to-do">
-              <?php if ($taskStatus == "to-do"): ?>
-              <?php endif ?>
-            </div>
-          </div>
-          <div class="card card-row card in-progress ">
-            <div class="card-header bg-info">
-              <h3 class="card-title">
-                В процесі
-              </h3>
-            </div>
-            <div class="card-body connectedSortable" data-status="in-progress">
-              <?php if ($taskStatus == "in-progress"): ?>
-              <?php endif ?>
-            </div>
-          </div>
-          <div class="card card-row card-success">
-            <div class="card-header">
-              <h3 class="card-title">
-                Готово
-              </h3>
-            </div>
-            <div class="card-body connectedSortable" data-status="done">
-              <?php if ($taskStatus == "done"): ?>
-              <?php endif ?>
-            </div>
+              <?php endif; ?>
+            <?php  endforeach; ?>
           </div>
         </div>
-      </section>
-    </div>
-
-    <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 0.1.0
+        <div class="card card-row card-default">
+          <div class="card-header bg-info">
+            <h3 class="card-title">
+              В процесі
+            </h3>
+          </div>
+          <div class="card-body connectedSortable" data-status="in-progress">
+            <?php  foreach ($tasks as $task): ?>
+            <?php if ($task["status"] == "in-progress" ):?>
+              <div class="card card-info card-outline"  data-task-id="1">
+                <div class="card-header">
+                  <h5 class="card-title"> <?= $task["title"] ?></h5>
+                  <div class="card-tools">
+                    <a href="#" class="btn btn-tool btn-link">#3</a>
+                    <a href="#" class="btn btn-tool">
+                      <i class="fas fa-pen"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p>
+                  </p>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-file"></i>
+                  </a>
+                  <small class="badge badge-danger"><i class="far fa-clock"></i> <?= $task["due_date"] ?></small>
+                </div>
+              </div>
+              <?php endif; ?>
+            <?php  endforeach; ?>
+          </div>
+        </div>
+        <div class="card card-row card-success">
+          <div class="card-header">
+            <h3 class="card-title">
+              Готово
+            </h3>
+          </div>
+          <div class="card-body connectedSortable" data-status="done">
+            <?php  foreach ($tasks as $task): ?>
+            <?php if ($task["status"] == "done" ):?>
+              <div class="card card-info card-outline"  data-task-id="1">
+                <div class="card-header">
+                  <h5 class="card-title"> <?= $task["title"] ?></h5>
+                  <div class="card-tools">
+                    <a href="#" class="btn btn-tool btn-link">#3</a>
+                    <a href="#" class="btn btn-tool">
+                      <i class="fas fa-pen"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p>
+                  </p>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-file"></i>
+                  </a>
+                  <small class="badge badge-danger"><i class="far fa-clock"></i> <?= $task["due_date"] ?></small>
+                </div>
+              </div>
+              <?php endif; ?>
+            <?php  endforeach; ?>
+          </div>
+        </div>
       </div>
-      <strong>Copyright &copy; 2023 <a href="https://ithillel.ua/">Комп'ютерна школа Hillel</a>.</strong> All rights
-        reserved.
-    </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+    </section>
   </div>
-  <!-- ./wrapper -->
 
-  <!-- jQuery -->
-  <script src="static/plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="static/plugins/jquery-ui/jquery-ui.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Ekko Lightbox -->
-  <script src="static/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
-  <!-- overlayScrollbars -->
-  <script src="static/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="static/js/adminlte.min.js"></script>
-  <!-- Filterizr-->
-  <script src="static/plugins/filterizr/jquery.filterizr.min.js"></script>
-  <!-- Page specific script -->
-  <script src="static/js/kanban.js"></script>
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 0.1.0
+    </div>
+    <strong>Copyright &copy; 2023 <a href="https://ithillel.ua/">Комп'ютерна школа Hillel</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="static/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="static/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Bootstrap -->
+<script src="static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Ekko Lightbox -->
+<script src="static/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="static/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="static/js/adminlte.min.js"></script>
+<!-- Filterizr-->
+<script src="static/plugins/filterizr/jquery.filterizr.min.js"></script>
+<!-- Page specific script -->
+<script src="static/js/kanban.js"></script>
 </body>
+
 </html>
+
+
+
+
