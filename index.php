@@ -1,5 +1,4 @@
 <?php
-
 $projects  = [
     "Вхідні",
     "Навчання",
@@ -7,7 +6,6 @@ $projects  = [
     "Домашні справи",
     "Авто",
 ];
-
 $tasks = [
     [
         "project" => "Робота",
@@ -45,11 +43,20 @@ $tasks = [
         "due_date" => null,
         "status" => "in-progress",
     ],
-
 ];
 
-
-
+function calculation_of_projects(array $data, string $project_name): int
+{
+  $i=0;
+  foreach($data as $task)
+  {
+    if ($task["project"] ===  $project_name)
+    {
+      $i++;
+    }
+  }
+return $i;
+}
 ?>
 
 
@@ -94,7 +101,6 @@ $tasks = [
         <a href="index.php" class="nav-link">Створити задачу</a>
       </li>
     </ul>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -105,7 +111,6 @@ $tasks = [
     </ul>
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -114,7 +119,6 @@ $tasks = [
            style="opacity: .8">
       <span class="brand-text font-weight-light">Завдання та проекти</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -126,7 +130,6 @@ $tasks = [
           <a href="#" class="d-block">Володимир</a>
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget= "treeview" role="menu" data-accordion="false">
@@ -138,7 +141,7 @@ $tasks = [
               <i class="nav-icon fas fa-columns"></i>
               <p>
                <?= $project ?>
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right"><?php  echo calculation_of_projects($tasks,$project) ?></span>
               </p>
             </a>
           </li>
@@ -157,7 +160,6 @@ $tasks = [
     </div>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper kanban">
     <section class="content-header">
@@ -327,7 +329,6 @@ $tasks = [
     <strong>Copyright &copy; 2023 <a href="https://ithillel.ua/">Комп'ютерна школа Hillel</a>.</strong> All rights
     reserved.
   </footer>
-
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -335,7 +336,6 @@ $tasks = [
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery -->
 <script src="static/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
